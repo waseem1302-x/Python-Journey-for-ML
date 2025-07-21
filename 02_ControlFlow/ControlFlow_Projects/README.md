@@ -24,25 +24,26 @@ This folder contains beginner-level Python projects built using **control flow c
 
 ---
 
-### 3️⃣ Student Gradebook
-- 🎓 Input multiple students' names and marks
-- 🧮 Calculates grades, average, highest, and lowest
-- 💾 Saves results to `student_grades.txt`
-- 🧠 Concepts: `if-elif-else`, loops, lists, functions, file handling
 
-> 📄 File: `03_student_gradebook.py`
+### 🎓 Gradebook System – Python Control Flow Project
 
----
+This project demonstrates the use of `if-elif-else`, `functions`, `loops`, and `file handling` to build a simple student gradebook system.
 
-## ✅ Concepts Practiced
-- Conditional logic (`if`, `elif`, `else`)
-- Loops (`for`, `while`)
-- Input validation
-- Functions
-- File writing (`open`, `write`)
-- List operations
+#### 🔧 Features:
+- User inputs number of students and their marks
+- Calculates grade based on standard scale (A+, A, A-, etc.)
+- Handles invalid input gracefully
+- Calculates and displays:
+  - Average marks
+  - Highest & lowest marks
+- Exports data to a `student_grades.txt` file
 
----
+#### 📂 File: `03_student_gradebook.py`
+
+Run it using:
+```bash
+python 03_student_gradebook.py
+
 
 ## 🧑‍💻 Author
 **Waseem Mushtaq**  
