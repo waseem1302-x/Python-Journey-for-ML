@@ -23,6 +23,7 @@ This folder contains beginner-level Python projects built using **control flow c
 > 📄 File: `02_weekly_health_tracker.py`
 
 ---
+git add .
 
 
 ### 🎓 Gradebook System – Python Control Flow Project
