@@ -1,4 +1,4 @@
-# 🧠 Python Control Flow Projects
+# 🧠 Projects
 
 This folder contains beginner-level Python projects built using **control flow concepts** such as `if`, `elif`, `else`, `while` and `for` loops. These projects are part of my Python journey, designed to apply what I’ve learned in real-world scenarios.
 
@@ -45,18 +45,38 @@ Run it using:
 ```bash
 python 03_student_gradebook.py
 
+🧑‍🏫 Project 4: Student Record System (Mid Level)
+Status: Completed
+Type: Console-based Python App
+Skills Practiced: Control Flow, Data Structures, Problem Solving
+
+A Python program that allows users to register multiple students, input their subject-wise marks, calculate averages, assign grades, and display individual reports.
+
+🧠 Concepts Used:
+Control Flow: if, elif, else, loops, break/continue
+
+Data Structures: list, dictionary and set
+
+Modular Thinking: Step-by-step breakdown of features
+
+💡 Features:
+Register students with unique IDs
+
+Input subject-wise marks
+
+Automatically calculate average marks and assign grades
+
+Display individual report cards
+
+📌 Reality Check:
+This project was built with guided help. I contributed the first few lines myself and worked closely through the logic step-by-step. I’m learning how to think like a problem solver, and this was a solid step in the right direction. The next one will be more independent.
+
+
+
 
 ## 🧑‍💻 Author
 **Waseem Mushtaq**  
 GitHub: [waseem1302-x](https://github.com/waseem1302-x)
-
----
-
-## 🚀 Coming Soon
-- Refactored versions using **dictionaries** and **OOP**
-- Interactive menu systems
-- More real-world mini projects
-
 ---
 
 > 💡 This folder is part of the full Python Journey repo focused on building real-world understanding from the ground up.
