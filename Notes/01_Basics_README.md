@@ -64,6 +64,3 @@ By completing this section, you should be able to:
 * Perform basic data manipulation
 
 Keep this folder as a reference throughout your journey — many errors in advanced topics trace back to basics.
-
-````
-
