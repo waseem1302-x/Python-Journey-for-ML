@@ -12,7 +12,7 @@ Each folder represents a key stage in my progress, from mastering the basics to 
 | Folder                 | Description |
 |------------------------|-------------|
 | `01_Basics`            | Python fundamentals: variables, data types, input/output, and expressions. |
-| `02_ControlFlow`       | Conditional statements, loops, and logic building. |
+| `02_ControlFlow`       | Conditional statements, loops, functions and logic building. |
 | `03_DataStructures`    | Lists, tuples, sets, dictionaries — core data structures in Python. |
 | `04_OOP`               | Object-Oriented Programming: classes, inheritance, and encapsulation. |
 | `05_Modules_Packages`  | Custom modules, importing, and organizing code. |
