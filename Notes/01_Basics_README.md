@@ -1,7 +1,3 @@
-# 📁 Folder-specific README Files for PythonJourney
-
----
-
 ## 📂 01\_Basics
 
 ### 📄 README.md
