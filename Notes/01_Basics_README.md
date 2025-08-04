@@ -6,8 +6,7 @@
 
 ### 📄 README.md
 
-````markdown
-# 📘 01_Basics - Python Fundamentals
+### 📘 01_Basics - Python Fundamentals
 
 This folder lays the groundwork for your Python journey. It focuses on understanding the basic syntax and data operations that form the foundation of all Python programs.
 
@@ -19,7 +18,6 @@ This folder lays the groundwork for your Python journey. It focuses on understan
 ```python
 x = 5
 name = "Waseem"
-````
 
 ### 2. Data Types
 
