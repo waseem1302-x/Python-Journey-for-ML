@@ -18,6 +18,7 @@ elif age >= 16:
     print("You can apply for a license")
 else:
     print("You are too young")
+```
 
 
 Keywords: if, elif, else
@@ -26,25 +27,27 @@ Keywords: if, elif, else
 ==, !=, >, <, >=, <=
 
 and, or, not
-
+```python
 if age > 18 and has_id:
     print("Entry allowed")
-
+```
 3. Loops
 ➤ For Loop
 Used to iterate over sequences like list, tuple, string, etc.
+```python
 for i in range(5):
     print("Hello", i)
+```
 
 
 ➤ While Loop
 Runs while a condition is true.
-
+```python
 x = 0
 while x < 5:
     print(x)
     x += 1
-
+```
 
 4. Loop Control Statements
 break – Exit the loop early
@@ -53,22 +56,23 @@ continue – Skip current iteration
 
 pass – Do nothing (placeholder)
 
-
+```python
 for i in range(10):
     if i == 5:
         break
     print(i)
-
+```
 
 5. Functions
 Encapsulate code into reusable blocks.
 
+```python
 def greet(name):
     return f"Hello, {name}"
 
 message = greet("Waseem")
 print(message)
-
+```
 
 
 Also covered:
