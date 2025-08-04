@@ -32,6 +32,8 @@ acc1.credit(40000)
 acc1.debit(5000)   
 
 
+# No:2 Encapsulation: Wrapping data (attributes) & code(methods) togather in single unit
+# kind of secure box
 
 # Private Attributes: Any attribute or method starting with double underscore __ is considered private.
 # It means: “For internal use only” – don’t access directly from outside the class.
@@ -48,4 +50,3 @@ class Account:
     
 acc2 = Account(1000)
 print(acc2.get_balance())
-print(acc2.__balance)   #Error
