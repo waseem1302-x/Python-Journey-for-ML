@@ -1,13 +1,7 @@
-Absolutely — here is the **full `README.md` for `📂 03_DataStructures`** in one complete file, formatted for direct copy-paste:
 
----
-
-````markdown
-# 🧺 03_DataStructures – Lists, Tuples, Sets & Dictionaries in Python
+### 🧺 03_DataStructures – Lists, Tuples, Sets & Dictionaries in Python
 
 This folder covers Python’s built-in data structures, which help you **store, organize, and access** your data effectively.
-
----
 
 ## ✅ Topics Covered
 
@@ -132,8 +126,6 @@ By the end of this folder, you should be able to:
 * Choose the right data structure for a problem
 * Use all 4 types efficiently
 * Solve problems using combinations (e.g., list of dicts)
-
----
 
 📌 These structures are heavily used in **DSA**, **Web Dev**, **APIs**, and **Machine Learning**. Master them now for everything coming later.
 
