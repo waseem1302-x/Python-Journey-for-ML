@@ -1,19 +1,11 @@
-Here is your complete and detailed `README.md` file for the **📂 04\_OOP** folder — written for clarity, understanding, and long-term reference:
 
----
-
-````markdown
-# 🧱 04_OOP – Object-Oriented Programming in Python
+### 🧱 04_OOP – Object-Oriented Programming in Python
 
 Object-Oriented Programming (OOP) is a way of structuring code using **classes and objects**, focusing on **real-world modeling**, **modularity**, and **reusability**.
 
 This folder covers the core concepts, structure, and four fundamental pillars of OOP.
 
----
-
-## ✅ Topics Covered
-
----
+# ✅ Topics Covered
 
 ### 1. 🔤 What is OOP?
 
