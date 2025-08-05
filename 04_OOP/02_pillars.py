@@ -50,3 +50,107 @@ class Account:
     
 acc2 = Account(1000)
 print(acc2.get_balance())
+
+
+
+
+"""
+INHERITANCE IN PYTHON
+
+Inheritance allows one class (child) to inherit properties and behaviors (methods)
+from another class (parent).
+
+Purpose:
+✅ Reuse existing code
+✅ Avoid repetition (DRY – Don't Repeat Yourself)
+✅ Build relationships like: is-a
+
+Example:
+If we have a 'Car' class,
+we can create a 'Cars Brand (Toyotoa, Honda etc)' class that inherits from it,
+so Student gets all of Person's features, and can have its own too.
+
+Types:
+- Single Inheritance
+- Multiple Inheritance
+"""
+class Car:
+    def __init__(self,name, brand, model):
+        self.brand = brand
+        self.model = model
+        self.name = name
+
+    def driver(self):
+        print(f"The driver of this {self.brand} {self.model} is {self.name}.")
+    
+    def drive(self):
+        print(f"{self.name} is driving {self.brand} {self.model}")
+
+    def stop(self):
+        print(f"{self.name} has stopped {self.brand} {self.model}.")
+
+
+class Toyota(Car):
+    def eco_mode(self):
+        print(f"{self.name} put {self.brand} {self.model} is on eco_mode")
+
+class Honda(Car):
+    def music_system(self):
+        print(f"{self.name} {self.brand} {self.model} has a premium music system.")
+
+
+t1 = Toyota("Ali" , "Toyota", "Camry")
+h1 = Honda("Waseem", "Honda", "Civic")
+
+t1.driver()
+t1.drive()
+t1.stop()
+t1.eco_mode()
+
+
+print("---")
+
+h1.driver()
+h1.drive()
+h1.music_system()
+h1.stop()
+
+
+"""
+🎭 Polymorphism means 'many forms'.
+In OOP, it allows different classes to have methods with the same name 
+but with **different behaviors**.
+
+✅ Purpose:
+- To write cleaner, more flexible, and reusable code.
+- It lets you call the same method on different objects and get different results.
+"""
+
+
+# 📦 Real-life example: We use + in all three but result is differnt for all.
+print(2+3)
+print("Waseem " + "Mushtaq")
+print([1,2,3] + [4,5,6])
+
+class Car:
+    def drive(self):
+        print("Car is driving...")
+
+class Toyota(Car):
+    def drive(self):
+        print("Toyota is driving smoothly with eco mode...")
+
+class Honda(Car):
+    def drive(self):
+        print("Honda is driving with sporty performance...")
+
+# Polymorphism in action:
+def test_drive(car):
+    car.drive()  # Same method, different output depending on class
+
+t1 = Toyota()
+h1 = Honda()
+
+# all test_drive on both
+test_drive(t1)
+test_drive(h1)  
