@@ -61,7 +61,8 @@ def main():
             print(f"  {subject}: {mark}")
         print(f"Average: {s['average']}")
         print(f"Grade: {s['grade']}")
-main()
+
+    return student_list
 
 def find_topper(student_list):
     if not student_list:
@@ -80,5 +81,5 @@ def find_topper(student_list):
     print(f"Average : {topper['average']}")
     print(f"Grade   : {topper['grade']}")
 
-find_topper()
+find_topper(student_list=main())
 
