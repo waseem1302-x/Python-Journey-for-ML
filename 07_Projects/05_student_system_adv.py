@@ -1,29 +1,73 @@
 class Student:
-
-    def __init__(self, name, age, ID, courses, gpa):
+    def __init__(self, name, age, id, courses, gpa):
         self.name = name
         self.age = age
-        self.ID = ID
+        self.id = id
         self.courses = courses
         self.gpa = gpa
-        
-        
-    def register(self):
-        return
+
+
+    def __str__(self):
+        return f"{self.id} - Name: {self.name}, Age: {self.age}, GPA: {self.gpa}, Courses: {" ".join(self.courses)}"
+
     
 students = []
 
 def add_student():
-    return
+    name = input("Enter Student Name: ")
+    age = int(input("Enter Student Age: "))
+    id = input("Enter Student ID: ")
+    courses = input("Enter Student Courses: ")
+    gpa = float(input("Enter Student GPA: "))
 
-def view_all_std():
-    return
+    new_student = Student(name,age,id,courses,gpa)
+    students.append(new_student)
+    print(f"Student '{name}' added successfully!")
 
-def delete():
-    return
+def view_all_students():
+    for s in students:
+        print(s)
 
-def search():
-    return
 
-def sort():
-    return
+def sort_students():
+    print("== Sort by ==")
+    print("1: By Name (A-Z)")
+    print("2: By ID (ascending)")
+    print("3: By GPA (ascending)")
+    choice = input("Enter Your Choice (1-3): ").strip()
+
+    if choice == "1":
+        sorted_list = sorted(students, key=lambda s: s.name.lower())
+    elif choice == "2":
+        sorted_list = sorted(students, key=lambda s: s.id)
+    elif choice == "3":
+        sorted_list = sorted(students, key=lambda s: s.gpa)
+    else:
+        print("Invalid choice.")
+        return
+
+    print("\n=== Sorted Students ===")
+    for s in sorted_list:
+        print(s)
+
+
+def main():
+    while True:
+        print("\n=== Student Management ===")
+        print("1. Add Student")
+        print("2. View All Students")
+        print("3. Sort Students")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            add_student()
+        elif choice == "2":
+            view_all_students()
+        elif choice == "3":
+            sort_students()
+        else:
+            print("Invalid choice, try again.")
+
+if __name__ == "__main__":
+    main()
