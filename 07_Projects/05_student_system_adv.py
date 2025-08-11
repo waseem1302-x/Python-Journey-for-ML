@@ -82,7 +82,43 @@ def search_student():
     else:
         print("Invalid choice.")
 
+def del_student():
+    print("== Delete Student ==")
+    print("1. By Name")
+    print("2. By ID")
 
+    choice = input("Enter Your Choice: ")
+
+    if choice == "1":
+        del_std = input("Enter name to delete: ").lower()
+        to_delete = [s for s in students if s.name.lower() == del_std]
+        
+        if to_delete:
+            for s in to_delete:
+                students.remove(s)
+            print(f"{len(to_delete)} student(s) deleted successfully.")
+        else:
+            print("No student found with that name.")
+
+    elif choice == "2":
+        del_id = input("Enter ID to delete: ")
+        to_delete = [s for s in students if s.id == del_id]
+        
+        if to_delete:
+            for s in to_delete:
+                students.remove(s)
+            print(f"{len(to_delete)} student(s) deleted successfully.")
+        else:
+            print("No student found with that ID.")
+
+    else:
+        print("Invalid choice.")
+
+    print("\n== Remaining Students ==")
+    for s in students:
+        print(s)
+
+            
 
 def main():
     while True:
@@ -91,6 +127,7 @@ def main():
         print("2. View All Students")
         print("3. Sort Students")
         print("4. Search Student")
+        print("5. Delete Student")
 
         choice = input("Enter choice: ")
 
@@ -102,6 +139,8 @@ def main():
             sort_students()
         elif choice == "4":
             search_student()
+        elif choice == "5":
+            del_student()
         else:
             print("Invalid choice, try again.")
 
