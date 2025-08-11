@@ -1,14 +1,14 @@
 class Student:
-    def __init__(self, name, age, id, courses, gpa):
+    def __init__(self, name, age, student_id, courses, gpa):
         self.name = name
         self.age = age
-        self.id = id
+        self.student_id = student_id
         self.courses = courses
         self.gpa = gpa
 
 
     def __str__(self):
-        return f"{self.id} - Name: {self.name}, Age: {self.age}, GPA: {self.gpa}, Courses: {" ".join(self.courses)}"
+        return f"{self.student_id} - Name: {self.name}, Age: {self.age}, GPA: {self.gpa}, Courses: {', '.join(self.courses)}"
 
     
 students = []
@@ -16,13 +16,14 @@ students = []
 def add_student():
     name = input("Enter Student Name: ")
     age = int(input("Enter Student Age: "))
-    id = input("Enter Student ID: ")
-    courses = input("Enter Student Courses: ")
+    student_id = input("Enter Student ID: ")
+    courses = input("Enter Student Courses (comma separated): ").split(",")
     gpa = float(input("Enter Student GPA: "))
 
-    new_student = Student(name,age,id,courses,gpa)
+    new_student = Student(name, age, student_id, [c.strip() for c in courses], gpa)
     students.append(new_student)
     print(f"Student '{name}' added successfully!")
+
 
 def view_all_students():
     for s in students:
@@ -39,7 +40,7 @@ def sort_students():
     if choice == "1":
         sorted_list = sorted(students, key=lambda s: s.name.lower())
     elif choice == "2":
-        sorted_list = sorted(students, key=lambda s: s.id)
+        sorted_list = sorted(students, key=lambda s: s.student_id)
     elif choice == "3":
         sorted_list = sorted(students, key=lambda s: s.gpa)
     else:
@@ -70,7 +71,7 @@ def search_student():
 
     elif choice == "2":
         id_query = input("Enter ID to search: ")
-        results = [s for s in students if s.id == id_query]
+        results = [s for s in students if s.student_id == id_query]
 
         if results:
             print("\n=== Search Results ===")
@@ -102,7 +103,7 @@ def del_student():
 
     elif choice == "2":
         del_id = input("Enter ID to delete: ")
-        to_delete = [s for s in students if s.id == del_id]
+        to_delete = [s for s in students if s.student_id == del_id]
         
         if to_delete:
             for s in to_delete:
@@ -128,6 +129,7 @@ def main():
         print("3. Sort Students")
         print("4. Search Student")
         print("5. Delete Student")
+        print("6. Exit")
 
         choice = input("Enter choice: ")
 
@@ -141,6 +143,8 @@ def main():
             search_student()
         elif choice == "5":
             del_student()
+        elif choice == "6":
+            break
         else:
             print("Invalid choice, try again.")
 
