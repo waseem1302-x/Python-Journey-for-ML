@@ -75,7 +75,7 @@ def find_topper(student_list):
         if student["average"] > topper["average"]:
             topper = student
 
-    print("\n🏆 Topper Report 🏆")
+    print("\n Topper Report ")
     print(f"Name    : {topper['name']}")
     print(f"ID      : {topper['id']}")
     print(f"Average : {topper['average']}")
