@@ -1,10 +1,3 @@
-Alright — let’s make your **Student Management System CLI Project README** not just a description,
-but a **story + technical doc** that shows your Python journey, current scope, and scaling plans.
-
-Here’s a **professional + personal** version:
-
----
-
 # 🎓 Student Management System (CLI)
 
 ## 📖 About This Project
