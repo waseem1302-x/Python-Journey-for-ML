@@ -1,16 +1,5 @@
-class Student:
-    def __init__(self, name, age, student_id, courses, gpa):
-        self.name = name
-        self.age = age
-        self.student_id = student_id
-        self.courses = courses
-        self.gpa = gpa
+from .student import Student
 
-
-    def __str__(self):
-        return f"{self.student_id} - Name: {self.name}, Age: {self.age}, GPA: {self.gpa}, Courses: {', '.join(self.courses)}"
-
-    
 students = []
 
 def add_student():
@@ -118,35 +107,3 @@ def del_student():
     print("\n== Remaining Students ==")
     for s in students:
         print(s)
-
-            
-
-def main():
-    while True:
-        print("\n=== Student Management ===")
-        print("1. Add Student")
-        print("2. View All Students")
-        print("3. Sort Students")
-        print("4. Search Student")
-        print("5. Delete Student")
-        print("6. Exit")
-
-        choice = input("Enter choice: ")
-
-        if choice == "1":
-            add_student()
-        elif choice == "2":
-            view_all_students()
-        elif choice == "3":
-            sort_students()
-        elif choice == "4":
-            search_student()
-        elif choice == "5":
-            del_student()
-        elif choice == "6":
-            break
-        else:
-            print("Invalid choice, try again.")
-
-if __name__ == "__main__":
-    main()
