@@ -87,10 +87,4 @@ This project serves as:
 
 ---
 
-## 📜 License
-
-This project is open-source and available under the MIT License.
-
----
-
 If you like this project or find it helpful, ⭐ **star it on GitHub** and follow my Python journey!
