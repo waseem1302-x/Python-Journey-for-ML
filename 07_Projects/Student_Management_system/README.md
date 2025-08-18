@@ -47,6 +47,8 @@ student_management_system/
 │   ├── __init__.py
 │   ├── student.py             # Student class (OOP)
 │   └── student_utils.py       # Functions for student operations
+|   └── database.py
+|   └── students.JSON        
 │
 │
 └── README.md
