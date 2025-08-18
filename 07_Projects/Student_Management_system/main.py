@@ -1,4 +1,4 @@
-from student_package import add_student, view_all_students, sort_students, search_student, del_student, Student
+from student_package import add_student, view_all_students, sort_students, search_student, del_student
 
 
 

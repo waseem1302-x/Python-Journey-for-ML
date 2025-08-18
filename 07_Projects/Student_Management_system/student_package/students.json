@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Waseem",
+        "age": 22,
+        "student_id": "100",
+        "courses": [
+            "Math",
+            "Physics"
+        ],
+        "gpa": 3.98
+    }
+]

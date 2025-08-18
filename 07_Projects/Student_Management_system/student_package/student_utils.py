@@ -1,4 +1,5 @@
 from .student import Student
+from . import database
 
 students = []
 
@@ -10,13 +11,26 @@ def add_student():
     gpa = float(input("Enter Student GPA: "))
 
     new_student = Student(name, age, student_id, [c.strip() for c in courses], gpa)
-    students.append(new_student)
+    database.save_students(new_student)
     print(f"Student '{name}' added successfully!")
 
 
 def view_all_students():
-    for s in students:
-        print(s)
+    students = database.load_students()
+    if not students:
+        print("No student found\n")
+        return
+    
+    print("\n=== All Students ===")
+    for idx, student in enumerate(students, start=1):
+        print(f"\nStudent {idx}")
+        print(f"  Name     : {student['name']}")
+        print(f"  Age      : {student['age']}")
+        print(f"  ID       : {student['student_id']}")
+        print(f"  Courses  : {', '.join(student['courses'])}")
+        print(f"  GPA      : {student['gpa']}")
+    print()
+
 
 
 def sort_students():

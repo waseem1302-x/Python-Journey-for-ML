@@ -9,3 +9,13 @@ class Student:
 
     def __str__(self):
         return f"{self.student_id} - Name: {self.name}, Age: {self.age}, GPA: {self.gpa}, Courses: {', '.join(self.courses)}"
+
+    def to_dict(self):
+        """Convert Student object to dictionary for JSON storage"""
+        return {
+            "name": self.name,
+            "age": self.age,
+            "student_id": self.student_id,
+            "courses": self.courses,
+            "gpa": self.gpa
+        }
