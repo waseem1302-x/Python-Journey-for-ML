@@ -24,11 +24,11 @@ def view_all_students():
     print("\n=== All Students ===")
     for idx, student in enumerate(students, start=1):
         print(f"\nStudent {idx}")
-        print(f"  Name     : {student['name']}")
-        print(f"  Age      : {student['age']}")
-        print(f"  ID       : {student['student_id']}")
-        print(f"  Courses  : {', '.join(student['courses'])}")
-        print(f"  GPA      : {student['gpa']}")
+        print(f"  Name     : {student.name}")
+        print(f"  Age      : {student.age}")
+        print(f"  ID       : {student.student_id}")
+        print(f"  Courses  : {', '.join(student.courses)}")
+        print(f"  GPA      : {student.gpa}")
     print()
 
 
