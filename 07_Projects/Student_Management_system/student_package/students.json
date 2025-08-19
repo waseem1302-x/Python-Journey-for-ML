@@ -8,5 +8,17 @@
             "Physics"
         ],
         "gpa": 3.98
+    },
+    {
+        "name": "Ali",
+        "age": 20,
+        "student_id": "101",
+        "courses": [
+            "Bio",
+            "Phy",
+            "Ch",
+            "Math"
+        ],
+        "gpa": 3.76
     }
 ]

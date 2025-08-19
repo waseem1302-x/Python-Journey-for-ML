@@ -19,3 +19,13 @@ class Student:
             "courses": self.courses,
             "gpa": self.gpa
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            name=data["name"],
+            age=data["age"],
+            student_id=data["student_id"],
+            courses=data["courses"],
+            gpa=data["gpa"]
+        )

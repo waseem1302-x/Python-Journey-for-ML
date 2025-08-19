@@ -34,6 +34,12 @@ def view_all_students():
 
 
 def sort_students():
+
+    students = database.load_students()
+    if not students:
+        print("No students found in the database.")
+        return
+    
     print("== Sort by ==")
     print("1: By Name (A-Z)")
     print("2: By ID (ascending)")

@@ -26,4 +26,5 @@ def load_students():
         return []
 
     with open(STUDENTS_FILE, "r") as f:
-        return json.load(f)
+        data =  json.load(f)
+        return [Student.from_dict(s) for s in data]
