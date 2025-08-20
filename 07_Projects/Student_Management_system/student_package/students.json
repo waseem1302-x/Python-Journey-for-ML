@@ -31,5 +31,16 @@
             "History"
         ],
         "gpa": 3.98
+    },
+    {
+        "name": "Hasnat",
+        "age": 22,
+        "student_id": "102",
+        "courses": [
+            "Math",
+            "Bio",
+            "History"
+        ],
+        "gpa": 3.79
     }
 ]

@@ -21,15 +21,7 @@ def view_all_students():
         print("No student found\n")
         return
     
-    print("\n=== All Students ===")
-    for idx, student in enumerate(students, start=1):
-        print(f"\nStudent {idx}")
-        print(f"  Name     : {student.name}")
-        print(f"  Age      : {student.age}")
-        print(f"  ID       : {student.student_id}")
-        print(f"  Courses  : {', '.join(student.courses)}")
-        print(f"  GPA      : {student.gpa}")
-    print()
+    print_students(students, "All Students")
 
 
 
@@ -56,11 +48,14 @@ def sort_students():
         print("Invalid choice.")
         return
 
-    print("\n=== Sorted Students ===")
-    for s in sorted_list:
-        print(s)
+    print_students(sorted_list, "Sorted Students")
 
 def search_student():
+    students = database.load_students()
+    if not students:
+        print("No students found in database")
+        return 
+    
     print("== Search By ==")
     print("1. Search by Name")
     print("2. Search by ID")
@@ -93,6 +88,13 @@ def search_student():
         print("Invalid choice.")
 
 def del_student():
+
+    students = database.load_students()
+
+    if not students:
+        print("No students in database")
+        return
+
     print("== Delete Student ==")
     print("1. By Name")
     print("2. By ID")
@@ -124,6 +126,20 @@ def del_student():
     else:
         print("Invalid choice.")
 
-    print("\n== Remaining Students ==")
-    for s in students:
-        print(s)
+    print_students(students, "Remaining Students")
+
+def print_students(students, title="Students"):
+    if not students:
+        print(f"\n== No {title} Found ==")
+        return
+
+    print(f"\n== {title} ==")
+    for idx, student in enumerate(students, start=1):
+        print(f"\nStudent {idx}")
+        print(f"{'Name':<10}: {student.name}")
+        print(f"{'Age':<10}: {student.age}")
+        print(f"{'ID':<10}: {student.student_id}")
+        print(f"{'Courses':<10}: {', '.join(student.courses) if student.courses else 'None'}")
+        print(f"{'GPA':<10}: {student.gpa}")
+        print("-" * 40)
+
