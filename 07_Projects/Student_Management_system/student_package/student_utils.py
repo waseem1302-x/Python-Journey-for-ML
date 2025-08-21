@@ -3,15 +3,16 @@ from . import database
 
 students = []
 
-def add_student():
+def add_students():
     name = input("Enter Student Name: ")
-    age = int(input("Enter Student Age: "))
+    age = get_valid_number("Enter Age (15–100): ", 17, 30, int)
     student_id = input("Enter Student ID: ")
     courses = input("Enter Student Courses (comma separated): ").split(",")
-    gpa = float(input("Enter Student GPA: "))
+    gpa = get_valid_number("Enter GPA (0–4): ", 0, 4, float)
+
 
     new_student = Student(name, age, student_id, [c.strip() for c in courses], gpa)
-    database.save_students(new_student)
+    database.add_student(new_student)
     print(f"Student '{name}' added successfully!")
 
 
@@ -35,15 +36,12 @@ def sort_students():
     print("== Sort by ==")
     print("1: By Name (A-Z)")
     print("2: By ID (ascending)")
-    print("3: By GPA (ascending)")
-    choice = input("Enter Your Choice (1-3): ").strip()
+    choice = input("Enter Your Choice (1-2): ").strip()
 
     if choice == "1":
         sorted_list = sorted(students, key=lambda s: s.name.lower())
     elif choice == "2":
         sorted_list = sorted(students, key=lambda s: s.student_id)
-    elif choice == "3":
-        sorted_list = sorted(students, key=lambda s: s.gpa)
     else:
         print("Invalid choice.")
         return
@@ -88,7 +86,6 @@ def search_student():
         print("Invalid choice.")
 
 def del_student():
-
     students = database.load_students()
 
     if not students:
@@ -125,8 +122,25 @@ def del_student():
 
     else:
         print("Invalid choice.")
+        return
+
+    database.save_students(students)
 
     print_students(students, "Remaining Students")
+
+
+def get_valid_number(prompt, min_val, max_val, value_type=float):
+    
+    while True:
+        try:
+            value = value_type(input(prompt))
+            if min_val <= value <= max_val:
+                return value
+            else:
+                print(f"⚠️ Value must be between {min_val} and {max_val}.")
+        except ValueError:
+            print(f"⚠️ Please enter a valid {value_type.__name__}.")
+
 
 def print_students(students, title="Students"):
     if not students:

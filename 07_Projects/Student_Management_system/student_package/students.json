@@ -5,42 +5,9 @@
         "student_id": "100",
         "courses": [
             "Math",
-            "Physics"
+            "Physics",
+            "Bio"
         ],
-        "gpa": 3.98
-    },
-    {
-        "name": "Ali",
-        "age": 20,
-        "student_id": "101",
-        "courses": [
-            "Bio",
-            "Phy",
-            "Ch",
-            "Math"
-        ],
-        "gpa": 3.76
-    },
-    {
-        "name": "Hasnat",
-        "age": 22,
-        "student_id": "103",
-        "courses": [
-            "Math",
-            "Eng",
-            "History"
-        ],
-        "gpa": 3.98
-    },
-    {
-        "name": "Hasnat",
-        "age": 22,
-        "student_id": "102",
-        "courses": [
-            "Math",
-            "Bio",
-            "History"
-        ],
-        "gpa": 3.79
+        "gpa": 3.45
     }
 ]

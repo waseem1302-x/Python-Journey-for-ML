@@ -1,4 +1,4 @@
-from student_package import add_student, view_all_students, sort_students, search_student, del_student
+from student_package import add_students, view_all_students, sort_students, search_student, del_student
 
 
 
@@ -15,7 +15,7 @@ def main():
         choice = input("Enter choice: ")
 
         if choice == "1":
-            add_student()
+            add_students()
         elif choice == "2":
             view_all_students()
         elif choice == "3":

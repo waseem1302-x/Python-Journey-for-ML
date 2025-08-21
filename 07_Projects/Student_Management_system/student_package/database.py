@@ -7,8 +7,7 @@ BASE_DIR = os.path.dirname(__file__)
 STUDENTS_FILE = os.path.join(BASE_DIR, "students.json")
 
 
-def save_students(student):
-    """Save a new student to JSON file"""
+def add_student(student):
     students = []
     if os.path.exists(STUDENTS_FILE) and os.path.getsize(STUDENTS_FILE) > 0:
         with open(STUDENTS_FILE, "r") as f:
@@ -20,11 +19,16 @@ def save_students(student):
         json.dump(students, f, indent=4)
 
 
+def save_students(students):
+    with open(STUDENTS_FILE, "w") as f:
+        json.dump([s.to_dict() for s in students], f, indent=4)
+
+
 def load_students():
-    """Load all students from JSON file"""
     if not os.path.exists(STUDENTS_FILE) or os.path.getsize(STUDENTS_FILE) == 0:
         return []
 
     with open(STUDENTS_FILE, "r") as f:
-        data =  json.load(f)
+        data = json.load(f)
         return [Student.from_dict(s) for s in data]
+
