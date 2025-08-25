@@ -53,40 +53,46 @@ def sort_students():
 
 
 # Search Students
+
+def binary_search_by_id(students, target_id):
+    left, right = 0, len(students) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if students[mid].student_id == target_id:
+            return mid
+        elif students[mid].student_id < target_id:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1  # not found
+
+
 def search_student():
     students = database.load_students()
     if not students:
-        print("No students found in database")
-        return 
-    
-    print("== Search By ==")
-    print("1. Search by Name")
-    print("2. Search by ID")
+        print("No students in database")
+        return
 
-    choice = input("Enter Your Choice: ")
+    print("== Search Student ==")
+    print("1. By Name")
+    print("2. By ID")
+    choice = input("Enter choice: ")
 
     if choice == "1":
-        name_query = input("Enter name to search: ").lower()
-        results = [s for s in students if name_query in s.name.lower()]
-        
-        if results:
-            print("\n=== Search Results ===")
-            for s in results:
-                print(s)
+        name = input("Enter name: ").lower()
+        found = [s for s in students if s.name.lower() == name]
+        if found:
+            print_students(found, "Search Results")
         else:
-            print("No students found with that name.")
+            print("No student found with that name.")
 
     elif choice == "2":
-        id_query = input("Enter ID to search: ")
-        results = [s for s in students if s.student_id == id_query]
-
-        if results:
-            print("\n=== Search Results ===")
-            for s in results:
-                print(s)
+        student_id = input("Enter ID: ")
+        idx = binary_search_by_id(students, student_id)
+        if idx != -1:
+            print_students([students[idx]], "Search Result")
         else:
-            print("No students found with that ID.")
-
+            print("No student found with that ID.")
     else:
         print("Invalid choice.")
 
@@ -94,44 +100,35 @@ def search_student():
 # Delete Student
 def del_student():
     students = database.load_students()
-
     if not students:
         print("No students in database")
         return
 
     print("== Delete Student ==")
-    del_id = input("Enter ID to delete: ").strip()
+    del_id = input("Enter ID to delete: ")
+    idx = binary_search_by_id(students, del_id)
 
-    # Find the student with that ID
-    student_to_delete = None
-    for s in students:
-        if s.student_id == del_id:
-            student_to_delete = s
-            break
+    if idx != -1:
+        student_to_delete = students[idx]
 
-    if not student_to_delete:
-        print("No student found with that ID.")
-        return
+        # Show student details before deletion
+        print("\nStudent Found:")
+        print(f"Name      : {student_to_delete.name}")
+        print(f"Age       : {student_to_delete.age}")
+        print(f"ID        : {student_to_delete.student_id}")
+        print(f"Courses   : {', '.join(student_to_delete.courses)}")
+        print(f"GPA       : {student_to_delete.gpa}")
 
-    # Show student details before deletion
-    print("\nStudent Found:")
-    print(f"Name      : {student_to_delete.name}")
-    print(f"Age       : {student_to_delete.age}")
-    print(f"ID        : {student_to_delete.student_id}")
-    print(f"Courses   : {', '.join(student_to_delete.courses)}")
-    print(f"GPA       : {student_to_delete.gpa}")
-
-    # Confirmation
-    confirm = input("\nAre you sure you want to delete this student? (Y/N): ").strip().lower()
-    if confirm == "y":
-        students.remove(student_to_delete)
-        database.save_students(students)
-        print("Student deleted successfully.")
+        confirm = input(f"\nAre you sure you want to delete this student? (y/n): ").lower()
+        if confirm == "y":
+            students.pop(idx)
+            database.save_students(students)
+            print(f"\nStudent with ID {del_id} deleted successfully.")
+            print_students(students, "Remaining Students")
+        else:
+            print("\nDeletion cancelled.")
     else:
-        print("Deletion cancelled.")
-
-    # show remaining students
-    print_students(students, "Remaining Students")
+        print("No student found with that ID.")
 
 
 # Inputs Validity
@@ -164,10 +161,6 @@ def generate_student_id():
         new_serial = 1
 
     return f"AIU{yy}{str(new_serial).zfill(4)}"
-
-
-
-
 
 
 # Output
