@@ -1,12 +1,15 @@
 from .student import Student
 from . import database
+import datetime
 
 students = []
 
+# Add Students
 def add_students():
     name = input("Enter Student Name: ")
-    age = get_valid_number("Enter Age (15–100): ", 17, 30, int)
-    student_id = input("Enter Student ID: ")
+    age = get_valid_number("Enter Age (15–30): ", 17, 30, int)
+    student_id = generate_student_id()
+    print(f"\nAssigned Student ID: {student_id}")
     courses = input("Enter Student Courses (comma separated): ").split(",")
     gpa = get_valid_number("Enter GPA (0–4): ", 0, 4, float)
 
@@ -15,7 +18,7 @@ def add_students():
     database.add_student(new_student)
     print(f"Student '{name}' added successfully!")
 
-
+# View All Students
 def view_all_students():
     students = database.load_students()
     if not students:
@@ -25,7 +28,7 @@ def view_all_students():
     print_students(students, "All Students")
 
 
-
+# Sort Students
 def sort_students():
 
     students = database.load_students()
@@ -48,6 +51,8 @@ def sort_students():
 
     print_students(sorted_list, "Sorted Students")
 
+
+# Search Students
 def search_student():
     students = database.load_students()
     if not students:
@@ -85,6 +90,8 @@ def search_student():
     else:
         print("Invalid choice.")
 
+
+# Delete Student
 def del_student():
     students = database.load_students()
 
@@ -93,42 +100,41 @@ def del_student():
         return
 
     print("== Delete Student ==")
-    print("1. By Name")
-    print("2. By ID")
+    del_id = input("Enter ID to delete: ").strip()
 
-    choice = input("Enter Your Choice: ")
+    # Find the student with that ID
+    student_to_delete = None
+    for s in students:
+        if s.student_id == del_id:
+            student_to_delete = s
+            break
 
-    if choice == "1":
-        del_std = input("Enter name to delete: ").lower()
-        to_delete = [s for s in students if s.name.lower() == del_std]
-        
-        if to_delete:
-            for s in to_delete:
-                students.remove(s)
-            print(f"{len(to_delete)} student(s) deleted successfully.")
-        else:
-            print("No student found with that name.")
-
-    elif choice == "2":
-        del_id = input("Enter ID to delete: ")
-        to_delete = [s for s in students if s.student_id == del_id]
-        
-        if to_delete:
-            for s in to_delete:
-                students.remove(s)
-            print(f"{len(to_delete)} student(s) deleted successfully.")
-        else:
-            print("No student found with that ID.")
-
-    else:
-        print("Invalid choice.")
+    if not student_to_delete:
+        print("No student found with that ID.")
         return
 
-    database.save_students(students)
+    # Show student details before deletion
+    print("\nStudent Found:")
+    print(f"Name      : {student_to_delete.name}")
+    print(f"Age       : {student_to_delete.age}")
+    print(f"ID        : {student_to_delete.student_id}")
+    print(f"Courses   : {', '.join(student_to_delete.courses)}")
+    print(f"GPA       : {student_to_delete.gpa}")
 
+    # Confirmation
+    confirm = input("\nAre you sure you want to delete this student? (Y/N): ").strip().lower()
+    if confirm == "y":
+        students.remove(student_to_delete)
+        database.save_students(students)
+        print("Student deleted successfully.")
+    else:
+        print("Deletion cancelled.")
+
+    # show remaining students
     print_students(students, "Remaining Students")
 
 
+# Inputs Validity
 def get_valid_number(prompt, min_val, max_val, value_type=float):
     
     while True:
@@ -137,11 +143,34 @@ def get_valid_number(prompt, min_val, max_val, value_type=float):
             if min_val <= value <= max_val:
                 return value
             else:
-                print(f"⚠️ Value must be between {min_val} and {max_val}.")
+                print(f"Value must be between {min_val} and {max_val}.")
         except ValueError:
-            print(f"⚠️ Please enter a valid {value_type.__name__}.")
+            print(f"Please enter a valid {value_type.__name__}.")
+
+# Auto Student Id Generation
+def generate_student_id():
+    year = datetime.datetime.now().year
+    yy = str(year)[-2:]
+
+    students = database.load_students()  # load directly from JSON
+    existing_ids = [s["student_id"] if isinstance(s, dict) else s.student_id for s in students]
+
+    current_year_ids = [id for id in existing_ids if id.startswith(f"AIU{yy}")]
+
+    if current_year_ids:
+        max_serial = max(int(id[6:]) for id in current_year_ids)
+        new_serial = max_serial + 1
+    else:
+        new_serial = 1
+
+    return f"AIU{yy}{str(new_serial).zfill(4)}"
 
 
+
+
+
+
+# Output
 def print_students(students, title="Students"):
     if not students:
         print(f"\n== No {title} Found ==")
