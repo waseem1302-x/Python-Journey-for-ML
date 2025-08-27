@@ -1,4 +1,4 @@
-from student_package import add_students, view_all_students, sort_students, search_student, del_student
+from student_package import add_students, view_all_students, sort_students, search_student, del_student, export_students
 
 
 
@@ -10,7 +10,8 @@ def main():
         print("3. Sort Students")
         print("4. Search Student")
         print("5. Delete Student")
-        print("6. Exit")
+        print("6. Export Students")
+        print("7. Exit")
 
         choice = input("Enter choice: ")
 
@@ -25,6 +26,9 @@ def main():
         elif choice == "5":
             del_student()
         elif choice == "6":
+            export_students()
+        elif choice == "7":
+            print("Exiting program...")
             break
         else:
             print("Invalid choice, try again.")

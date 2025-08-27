@@ -1,6 +1,8 @@
 from .student import Student
 from . import database
 import datetime
+from tabulate import tabulate
+import csv, json
 
 students = []
 
@@ -162,20 +164,47 @@ def generate_student_id():
 
     return f"AIU{yy}{str(new_serial).zfill(4)}"
 
+# Export Students to CSV 
+def export_students():
+    students = database.load_students()   # load here
+    
+    if not students:
+        print("No students to export.")
+        return
+
+    with open("students.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["ID", "Name", "Age", "Courses", "GPA"])
+        for s in students:
+            writer.writerow([
+                s.student_id,
+                s.name,
+                s.age,
+                ", ".join(s.courses),
+                s.gpa
+            ])
+    
+    print("Students exported successfully to students.csv")
+
+
+
 
 # Output
-def print_students(students, title="Students"):
+def print_students(students, title="Student List"):
     if not students:
-        print(f"\n== No {title} Found ==")
+        print("No students to display.")
         return
 
     print(f"\n== {title} ==")
-    for idx, student in enumerate(students, start=1):
-        print(f"\nStudent {idx}")
-        print(f"{'Name':<10}: {student.name}")
-        print(f"{'Age':<10}: {student.age}")
-        print(f"{'ID':<10}: {student.student_id}")
-        print(f"{'Courses':<10}: {', '.join(student.courses) if student.courses else 'None'}")
-        print(f"{'GPA':<10}: {student.gpa}")
-        print("-" * 40)
+    table = []
+    for s in students:
+        table.append([
+            s.student_id,
+            s.name,
+            s.age,
+            ", ".join(s.courses),
+            s.gpa
+        ])
 
+    headers = ["ID", "Name", "Age", "Courses", "GPA"]
+    print(tabulate(table, headers=headers, tablefmt="grid"))

@@ -9,5 +9,17 @@
             "Bio"
         ],
         "gpa": 3.45
+    },
+    {
+        "name": "Hasnain",
+        "age": 22,
+        "student_id": "AIU250002",
+        "courses": [
+            "Math",
+            "Physics",
+            "Bio",
+            "History"
+        ],
+        "gpa": 3.65
     }
 ]
