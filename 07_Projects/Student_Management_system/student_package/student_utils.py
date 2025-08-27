@@ -2,7 +2,7 @@ from .student import Student
 from . import database
 import datetime
 from tabulate import tabulate
-import csv, json
+import csv
 
 students = []
 
@@ -84,7 +84,7 @@ def search_student():
         name = input("Enter name: ").lower()
         found = [s for s in students if s.name.lower() == name]
         if found:
-            print_students(found, "Search Results")
+            print_student(found, "Search Results")
         else:
             print("No student found with that name.")
 
@@ -92,7 +92,7 @@ def search_student():
         student_id = input("Enter ID: ")
         idx = binary_search_by_id(students, student_id)
         if idx != -1:
-            print_students([students[idx]], "Search Result")
+            print_student(students[idx], "Search Result")
         else:
             print("No student found with that ID.")
     else:
@@ -102,67 +102,33 @@ def search_student():
 # Delete Student
 def del_student():
     students = database.load_students()
+
     if not students:
-        print("No students in database")
+        print("No students to delete.")
         return
 
-    print("== Delete Student ==")
-    del_id = input("Enter ID to delete: ")
-    idx = binary_search_by_id(students, del_id)
+    student_id = input("Enter ID to delete: ").strip()
 
-    if idx != -1:
-        student_to_delete = students[idx]
+    # Search for student
+    student_to_delete = next((s for s in students if s.student_id == student_id), None)
 
-        # Show student details before deletion
-        print("\nStudent Found:")
-        print(f"Name      : {student_to_delete.name}")
-        print(f"Age       : {student_to_delete.age}")
-        print(f"ID        : {student_to_delete.student_id}")
-        print(f"Courses   : {', '.join(student_to_delete.courses)}")
-        print(f"GPA       : {student_to_delete.gpa}")
+    if not student_to_delete:
+        print("Student not found.")
+        return
 
-        confirm = input(f"\nAre you sure you want to delete this student? (y/n): ").lower()
-        if confirm == "y":
-            students.pop(idx)
-            database.save_students(students)
-            print(f"\nStudent with ID {del_id} deleted successfully.")
-            print_students(students, "Remaining Students")
-        else:
-            print("\nDeletion cancelled.")
+    # Show student details before deletion
+    print("\nStudent Found:")
+    print_student(student_to_delete)
+
+    confirm = input("Are you sure you want to delete this student? (y/n): ").lower()
+    if confirm == 'y':
+        students.remove(student_to_delete)
+        database.save_students(students)
+        print("Student deleted successfully.")
     else:
-        print("No student found with that ID.")
+        print("Deletion cancelled.")
 
 
-# Inputs Validity
-def get_valid_number(prompt, min_val, max_val, value_type=float):
-    
-    while True:
-        try:
-            value = value_type(input(prompt))
-            if min_val <= value <= max_val:
-                return value
-            else:
-                print(f"Value must be between {min_val} and {max_val}.")
-        except ValueError:
-            print(f"Please enter a valid {value_type.__name__}.")
-
-# Auto Student Id Generation
-def generate_student_id():
-    year = datetime.datetime.now().year
-    yy = str(year)[-2:]
-
-    students = database.load_students()  # load directly from JSON
-    existing_ids = [s["student_id"] if isinstance(s, dict) else s.student_id for s in students]
-
-    current_year_ids = [id for id in existing_ids if id.startswith(f"AIU{yy}")]
-
-    if current_year_ids:
-        max_serial = max(int(id[6:]) for id in current_year_ids)
-        new_serial = max_serial + 1
-    else:
-        new_serial = 1
-
-    return f"AIU{yy}{str(new_serial).zfill(4)}"
 
 # Export Students to CSV 
 def export_students():
@@ -187,9 +153,39 @@ def export_students():
     print("Students exported successfully to students.csv")
 
 
+# Auto Student Id Generation
+def generate_student_id():
+    year = datetime.datetime.now().year
+    yy = str(year)[-2:]
+
+    students = database.load_students()  # load directly from JSON
+    existing_ids = [s["student_id"] if isinstance(s, dict) else s.student_id for s in students]
+
+    current_year_ids = [id for id in existing_ids if id.startswith(f"AIU{yy}")]
+
+    if current_year_ids:
+        max_serial = max(int(id[6:]) for id in current_year_ids)
+        new_serial = max_serial + 1
+    else:
+        new_serial = 1
+
+    return f"AIU{yy}{str(new_serial).zfill(4)}"
+
+# Inputs Validity
+def get_valid_number(prompt, min_val, max_val, value_type=float):
+    
+    while True:
+        try:
+            value = value_type(input(prompt))
+            if min_val <= value <= max_val:
+                return value
+            else:
+                print(f"Value must be between {min_val} and {max_val}.")
+        except ValueError:
+            print(f"Please enter a valid {value_type.__name__}.")
 
 
-# Output
+# Output for Multiple students
 def print_students(students, title="Student List"):
     if not students:
         print("No students to display.")
@@ -208,3 +204,13 @@ def print_students(students, title="Student List"):
 
     headers = ["ID", "Name", "Age", "Courses", "GPA"]
     print(tabulate(table, headers=headers, tablefmt="grid"))
+
+# Single student
+def print_student(student, title):
+    if title:
+        print(f"\n== {title} ==\n")
+        print(f"Name    : {student.name}")
+        print(f"Age     : {student.age}")
+        print(f"ID      : {student.student_id}")
+        print(f"Courses : {', '.join(student.courses)}")
+        print(f"GPA     : {student.gpa}")
