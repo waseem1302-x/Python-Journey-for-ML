@@ -27,12 +27,15 @@ This project is not just a one-time build — it’s designed as a **base projec
 
 ## 🎯 Current Features (v2.0)
 
-* **Add a Student** (name, age, ID, courses, GPA)
-* **View All Students** in a clean list
-* **Search Students** by ID or name
-* **Remove Students** from the system
-* **Modular Architecture** with packages (`student`, `utils`, `database(Soon)`)
-* **Input Validation** for cleaner data handling
+- Add a new student with **validated inputs** (Name, Age, Courses, GPA)
+- View all students in a **tabular format**
+- Sort students by **Name** or **ID**
+- Search students by **Name** or **ID**
+- Delete students with **confirmation**
+- Export student data to **timestamped CSV**
+- Automatic **unique student ID generation**
+- **Persistent JSON database**
+- Robust **input validation and error handling**
 
 ---
 
