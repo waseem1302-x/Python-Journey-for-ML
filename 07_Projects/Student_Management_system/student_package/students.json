@@ -20,5 +20,38 @@
             "CHEMISTRY"
         ],
         "gpa": 3.67
+    },
+    {
+        "name": "Asif",
+        "age": 24,
+        "student_id": "AIU250003",
+        "courses": [
+            "MATH",
+            "ENGLISH",
+            "PROBABILITY & STATISTICS"
+        ],
+        "gpa": 3.56
+    },
+    {
+        "name": "Hasnat",
+        "age": 22,
+        "student_id": "AIU250004",
+        "courses": [
+            "PHYSICS",
+            "BIO",
+            "MATH"
+        ],
+        "gpa": 3.96
+    },
+    {
+        "name": "Haseeb",
+        "age": 22,
+        "student_id": "AIU250005",
+        "courses": [
+            "HISTORY",
+            "ART",
+            "LANGUAGE STUDIES"
+        ],
+        "gpa": 3.98
     }
 ]

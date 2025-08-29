@@ -3,7 +3,7 @@ from . import database
 import datetime
 from tabulate import tabulate
 import csv
-import os
+from .logger import logger 
 
 # -----------------------------
 # Utility Functions for Student Management System
@@ -41,8 +41,13 @@ def add_students():
     try:
         database.add_student(new_student)
         print(f"Student '{name}' (ID: {student_id}) added successfully!")
+
+        # log success
+        logger.info(f"Student Added | ID={student_id} | Name={name} | Age={age}")
+
     except Exception as e:
         print(f"Error adding student: {e}")
+        logger.error(f"Failed to add student | ID={student_id} | Error={e}")
 
 # -----------------------------
 # View Students
@@ -54,8 +59,11 @@ def view_all_students():
     students = get_students()
     if not students:
         print("No students found.\n")
+        logger.warning("View All | No students found.")
         return
     print_students(students, "All Students")
+    logger.info(f"Viewed all students | Count={len(students)}")
+
 
 # -----------------------------
 # Sort Students
@@ -67,6 +75,7 @@ def sort_students():
     students = get_students()
     if not students:
         print("No students found in the database.")
+        logger.warning("Sort | No students available.")
         return
 
     print("== Sort by ==")
@@ -80,9 +89,11 @@ def sort_students():
         sorted_list = sorted(students, key=lambda s: s.student_id)
     else:
         print("Invalid choice.")
+        logger.warning(f"Sort | Invalid key entered: {choice}")
         return
 
     print_students(sorted_list, "Sorted Students")
+    logger.info(f"Students sorted by {choice } | Count={len(sorted_list)}")
 
 # -----------------------------
 # Search Students
@@ -124,6 +135,7 @@ def search_student():
     students = get_students()
     if not students:
         print("No students in database.")
+        logger.warning("Search | No students available.")
         return
 
     print("== Search Student ==")
@@ -136,19 +148,28 @@ def search_student():
         found = find_student(students, by="name", value=name)
         if found:
             print_students(found, "Search Results")
+            logger.info(
+                f"Search success | Search by=name | value={name} | Matches={len(found)}"
+            )
         else:
             print("No student found with that name.")
+            logger.warning(f"Search failed | Search by=name | value={name}")
 
     elif choice == "2":
         student_id = input("Enter ID: ").strip()
         found = find_student(students, by="id", value=student_id)
         if found:
             print_student(found[0], "Search Result")
+            logger.info(
+                f"Search success | Search by=id | value={student_id} | Matches={len(found)}"
+            )
         else:
             print("No student found with that ID.")
+            logger.warning(f"Search failed | by=id | value={student_id}")
 
     else:
         print("Invalid choice.")
+        logger.warning(f"Search | Invalid choice entered: {choice}")
 
 # -----------------------------
 # Delete Student
@@ -173,6 +194,8 @@ def del_student():
             try:
                 database.save_students(students)
                 print("Student deleted successfully.")
+                logger.info(f"Student Deleted | ID={found[0]['student_id']} | Name={found[0]['name']}")
+
             except Exception as e:
                 print(f"Error saving changes: {e}")
         else:
@@ -190,6 +213,7 @@ def export_students():
     students = get_students()
     if not students:
         print("No students to export.")
+        logger.warning("Export | No students available.")
         return
 
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -208,8 +232,10 @@ def export_students():
                     s.gpa
                 ])
         print(f"Students exported successfully to {filename}")
+        logger.info(f"Export successful | File={filename} | Count={len(students)}")
     except Exception as e:
         print(f"Error exporting students: {e}")
+        logger.error(f"Export failed | File={filename} | Error={e}")
 
 # -----------------------------
 # Generate Student ID
