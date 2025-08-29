@@ -42,19 +42,21 @@ This project is not just a one-time build — it’s designed as a **base projec
 ## 📂 Project Structure
 
 ```
-student_management_system/
-│
-├── main.py                   # Entry point for CLI
-│
-├── student_package/                  # Student-related logic
+SMS/
+├── student_package/
 │   ├── __init__.py
-│   ├── student.py             # Student class (OOP)
-│   └── student_utils.py       # Functions for student operations
-|   └── database.py
-|   └── students.JSON        
-│
-│
-└── README.md
+│   ├── student.py
+│   ├── database.py
+│   ├── student_utils.py
+│   └── logger.py
+|
+├── logs/
+│   └── sms.log
+|
+├── main.py
+├── README.md
+└── requirements.txt
+
 ```
 
 ---
