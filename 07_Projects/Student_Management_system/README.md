@@ -7,7 +7,7 @@ This project started as a simple single-file script and gradually evolved into a
 
 ## 📖 Project Evolution Timeline
 
-### ** Step 1: The Beginning**
+### **Step 1: The Beginning**
 
 * Started with **one file (`main.py`)**.
 * Contained only **`add_student()`** function.
@@ -150,13 +150,13 @@ SMS/
 
 ## ⚙️ Features (Final State)
 
-✅ Add, delete, search, and view students.
-✅ Input validation (name, age, GPA, courses).
-✅ Student IDs generated automatically.
-✅ Save/load from JSON database.
-✅ Tabular display using `tabulate`.
-✅ Logging with file.
-✅ Modular, package-based design.
+* ✅ Add, delete, search, and view students.
+* ✅ Input validation (name, age, GPA, courses).
+* ✅ Student IDs generated automatically.
+* ✅ Save/load from JSON database.
+* ✅ Tabular display using `tabulate`.
+* ✅ Logging with file.
+* ✅ Modular, package-based design.
 
 ---
 
