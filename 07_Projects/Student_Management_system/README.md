@@ -4,7 +4,6 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-orange.svg)
 
-# 🎓 Student Management System (SMS)
 My first structured Python project with CRUD, JSON/CSV import-export, and logging.
 
 A **Python-based Student Management System (SMS)** built step by step during my learning journey.
