@@ -150,7 +150,7 @@ SMS/
 
 ## ⚙️ Features (Final State)
 
-* ✅ Add, delete, search, and view students.
+* ✅ Add, view, sort, delete, search, and export students.
 * ✅ Input validation (name, age, GPA, courses).
 * ✅ Student IDs generated automatically.
 * ✅ Save/load from JSON database.

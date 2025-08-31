@@ -2,7 +2,7 @@ from .student import Student
 from . import database
 import datetime
 from tabulate import tabulate
-import csv
+import csv,os,json
 from .logger import logger 
 
 # -----------------------------
@@ -236,6 +236,62 @@ def export_students():
     except Exception as e:
         print(f"Error exporting students: {e}")
         logger.error(f"Export failed | File={filename} | Error={e}")
+
+
+# -----------------------------
+# Import Students from CSV/JSON
+# -----------------------------
+
+def import_students():
+    """
+    Import students from JSON or CSV file.
+    """
+    print("== Import Students ==")
+    print("1. From JSON file")
+    print("2. From CSV file")
+    choice = input("Enter choice: ").strip()
+
+    if choice == "1":
+        file_path = input("Enter JSON file path (default: students_import.json): ").strip() or "students_import.json"
+        if not os.path.exists(file_path):
+            print(f"No JSON file found at {file_path}")
+            return
+        try:
+            with open(file_path, "r") as f:
+                data = json.load(f)
+                students = database.load_students()
+                for s in data:
+                    students.append(Student(**s))
+                database.save_students(students)
+            print(f"Imported {len(data)} students from {file_path}")
+            logger.info(f"Imported {len(data)} students from JSON | File={file_path}")
+        except Exception as e:
+            print(f"Error importing from JSON: {e}")
+
+    elif choice == "2":
+        file_path = input("Enter CSV file path (default: students_import.csv): ").strip() or "students_import.csv"
+        if not os.path.exists(file_path):
+            print(f"No CSV file found at {file_path}")
+            return
+        try:
+            with open(file_path, newline="") as f:
+                reader = csv.DictReader(f)
+                students = database.load_students()
+                for row in reader:
+                    # Convert types (age -> int, gpa -> float, courses -> list)
+                    row["age"] = int(row["age"])
+                    row["gpa"] = float(row["gpa"])
+                    row["courses"] = row["courses"].split(",") if row["courses"] else []
+                    students.append(Student(**row))
+                database.save_students(students)
+            print(f"Imported {reader.line_num - 1} students from {file_path}")
+            logger.info(f"Imported {reader.line_num - 1} students from CSV | File={file_path}")
+        except Exception as e:
+            print(f"Error importing from CSV: {e}")
+
+    else:
+        print("Invalid choice.")
+
 
 # -----------------------------
 # Generate Student ID

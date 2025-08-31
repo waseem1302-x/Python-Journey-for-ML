@@ -16,11 +16,12 @@ def main_menu():
         print("4. Search Student")
         print("5. Delete Student")
         print("6. Export Students to CSV")
-        print("7. Exit")
+        print("7. Import Students from CSV & JSON")
+        print("8. Exit")
         print("="*40)
 
         try:
-            choice = input("Enter your choice (1-7): ").strip()
+            choice = input("Enter your choice (1-8): ").strip()
             if choice == "1":
                 su.add_students()
             elif choice == "2":
@@ -34,6 +35,8 @@ def main_menu():
             elif choice == "6":
                 su.export_students()
             elif choice == "7":
+                su.import_students()
+            elif choice == "8":
                 print("Exiting program. Goodbye!")
                 break
             else:

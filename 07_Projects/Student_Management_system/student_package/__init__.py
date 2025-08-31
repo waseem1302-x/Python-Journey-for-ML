@@ -12,7 +12,9 @@ from .student_utils import (
     validate_name,
     validate_age,
     validate_courses,
-    validate_gpa
+    validate_gpa,
+    import_students,
+    binary_search_by_id
 )
 
 from .student import Student
@@ -23,6 +25,7 @@ __all__ = [
     "view_all_students",
     "sort_students",
     "search_student",
+    "binary_search_by_id",
     "del_student",
     "print_students",
     "get_valid_input",
@@ -35,5 +38,6 @@ __all__ = [
     "Student",
     "save_students",
     "load_students",
-    "add_student"
+    "add_student",
+    "import_students"
 ]
