@@ -41,3 +41,5 @@ __all__ = [
     "add_student",
     "import_students"
 ]
+
+__version__ = "1.0.0"
