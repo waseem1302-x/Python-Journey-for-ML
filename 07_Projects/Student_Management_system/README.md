@@ -150,7 +150,7 @@ SMS/
 
 ## ⚙️ Features (Final State)
 
-* ✅ Add, view, sort, delete, search, and export students.
+* ✅ Add, view, sort, delete, search, import and export students.
 * ✅ Input validation (name, age, GPA, courses).
 * ✅ Student IDs generated automatically.
 * ✅ Save/load from JSON database.
@@ -204,17 +204,19 @@ tabulate>=0.9.0
 4. Search Student
 5. Delete Student
 6. Export Students
-7. Exit
+7. Import Srudents
+8. Exit
 ```
 
 ---
 
 ## 🔮 Future Improvements
 
-* Add GUI (Tkinter/PyQt).
-* Import from CSV/Excel.
-* GPA calculator integration.
-* Student performance analytics.
+*     Add GUI (Tkinter/PyQt).
+* ✅ Import from CSV/Excel.  
+* ✅ Export to CSV/Excel.
+*     GPA calculator integration.
+*     Student performance analytics.
 
 ---
 
