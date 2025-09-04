@@ -79,8 +79,12 @@ Each folder represents a key stage in my progress, from mastering the basics to 
 │           │   student_utils.py
 │           │   __init__.py
 │          
-│
-├───08_ML_Prep
+│├───08_API_Basics
+|       |
+│       |    01_API_intro.py
+│       |    02_API_requests_basics.py
+|
+├───09_ML_Prep
 └───Notes
       |   01_Basics_README.md
       |   02_ControlFlow_README.md

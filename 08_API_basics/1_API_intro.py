@@ -1,22 +1,26 @@
 import requests
-
-
-# test api
+import json
 
 url = "https://fake-json-api.mock.beeceptor.com/users"
 
-response = requests.get(url, timeout=5)
+try:
+    response = requests.get(url, timeout=5)
+    response.raise_for_status()
 
-if response.status_code == 200:
-    user = response.json()
+    user_data = response.json()
+    
+    print("Success! Number of users fetched:", len(user_data))
+    
+    if len(user_data) >= 10:
+        first_ten_users = user_data[:10]
+        print("\nFirst 3 User Details:")
+        for user in first_ten_users:
+            print(json.dumps(user, indent=4))
+    elif user_data:
+        print("\nNot enough users returned to display the first 10. Showing all returned users:")
+        print(json.dumps(user_data, indent=4))
+    else:
+        print("No users found in the response.")
 
-    print("Success! Number of user fetched", len(user))
-
-    first_user = user[0]
-    print("\n First User Details:")
-    print("ID:", first_user["id"])
-    print("Name:", first_user["name"] )
-    print("Email:",  first_user["email"])
-
-else:
-    print("Request Failed", response.status_code)
+except requests.exceptions.RequestException as e:
+    print(f"An error occurred: {e}")
