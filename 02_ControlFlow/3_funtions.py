@@ -25,7 +25,7 @@ study_minutes(30)
 
 def efficiency_score(ml_minutes, youtube_minutes, distractions_minutes):
     score = (ml_minutes * 2 + youtube_minutes * 1.5 - distractions_minutes * 2) / 10
-    return f"Your productivity score is: {score:.2f} 💯"
+    return f"Your productivity score is: {score:.2f}"
 
 print(efficiency_score(120, 60, 30))
 

@@ -75,33 +75,26 @@ print(message)
 ```
 
 
-Also covered:
+## Also covered:
 
-Function arguments
+* Function arguments
+* Return values
+* Default parameters
+* Scope (global, local)
+* def, return
 
-Return values
-
-Default parameters
-
-Scope (global, local)
-
-def, return
-
-🧠 Why It Matters
+## 🧠 Why It Matters
 Control flow is how your program decides what to do, when, and how often.
 Functions make your code modular, reusable, and organized.
 
 Without control flow, your code is just a list of instructions with no intelligence.
 
-🎯 Learning Outcomes
-By completing this section, you will be able to:
+## 🎯 Learning Outcomes
+* By completing this section, you will be able to:
+* Write programs that make decisions
+* Use loops to handle repetitive tasks
+* Build and use your own functions
 
-Write programs that make decisions
-
-Use loops to handle repetitive tasks
-
-Build and use your own functions
-
-Manage complexity by organizing code into logical blocks
+### Manage complexity by organizing code into logical blocks
 
 📌 This is the true start of "problem-solving" in Python — keep practicing patterns and challenges using what you’ve learned here!

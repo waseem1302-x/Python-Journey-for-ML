@@ -1,4 +1,4 @@
-                                            #diving deep into loops
+#diving deep into loops
 #Print numbers from 1 to 10:
 for i in range(1,11):
     print(i)
@@ -38,19 +38,19 @@ def calculate_score(study_min, sleep_hours, distraction_min, screen_time):
 
 def feedback(score):
     if score >= 80:
-        return "🔥 Great Day! You're on fire!"
+        return "Great Day! You're on fire!"
     
     elif score >= 50:
-        return "😊 Doing good, stay consistent!"
+        return "Doing good, stay consistent!"
     
     else:
-        return "😓 Focus more, you can do better."
+        return "Focus more, you can do better."
 
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
 for day in days:
 
-    print(f"\n📅---{day}---")
+    print(f"\n---{day}---")
     study_min = int(input("Enter Your Study Minutes: "))
     sleep_hours = int(input("Enter your Sleep Hours: "))
     distraction_min = int(input("Enter Your Distraction Minutes: "))
