@@ -2,9 +2,11 @@ import json
 import os
 from .student import Student
 
-# Save file in the same folder as database.py
-BASE_DIR = os.path.dirname(__file__)  
-STUDENTS_FILE = os.path.join(BASE_DIR, "students.json")
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+os.makedirs(DATA_DIR, exist_ok=True)
+STUDENTS_FILE = os.path.join(DATA_DIR, "students.json")
+
 
 
 def add_student(student):
