@@ -1,29 +1,67 @@
-# Python cache
+# =========================
+# Python cache & build files
+# =========================
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*.so
 *.pyd
+*.pyo
 
-# Virtual environment
+# =========================
+# Virtual Environments
+# =========================
 venv/
 .env/
+env/
+.venv/
+.env*/
+ENV/
+env.bak/
+venv.bak/
 
-# Logs
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# =========================
+# Logs & Outputs
+# =========================
 logs/
 *.log
+*.out
+*.err
 
-# Data files
+# =========================
+# Data Files
+# =========================
 *.csv
+*.tsv
 *.json
+*.xls
+*.xlsx
+*.db
+*.sqlite
+*.pickle
+*.joblib
 
-# IDE configs
+# =========================
+# IDE / Editor Settings
+# =========================
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 
-# Virtual environments
-venv/
-.env/
-.env*/
-*.ipynb_checkpoints/
-env/
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
 
+# =========================
+# Others (temporary files)
+# =========================
+*.bak
+*.tmp
