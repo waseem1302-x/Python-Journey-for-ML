@@ -24,5 +24,6 @@ logs/
 venv/
 .env/
 .env*/
+*.ipynb_checkpoints/
 env/
 
